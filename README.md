@@ -33,6 +33,10 @@ python -m pip install jsonschema
 PYTHONPATH=src python -m acx validate examples/print-manifest.json
 ```
 
+The experimental Agent PrintIntent profile is documented in
+[`docs/PRINT-PROFILE.md`](docs/PRINT-PROFILE.md) and validated by
+`schemas/profiles/acx-print-intent.schema.json`.
+
 Publish the validated manifest at `/.well-known/acx.json`.
 
 ## v0.1 lifecycle
@@ -56,6 +60,7 @@ The specification should remain royalty-free, vendor-neutral and public. Changes
 
 - [Done] Publish draft Manifest/Receipt JSON Schemas and validator.
 - [Done] Add a local HTTP End-to-End demo, rejection tests and trilingual developer guides.
+- [Done] Allow namespaced capability extensions and add an experimental Agent PrintIntent profile.
 - [Next] Freeze core vocabulary and threat model; agree on lifecycle wire schemas and digest canonicalization.
 - [Later] Add signed manifest and receipt profile (JWS/VC-compatible).
 - [Later] Build MCP and A2A adapters.
@@ -70,3 +75,7 @@ Specification text: CC BY 4.0. Reference code: Apache-2.0. Contributors: DCO + e
 ## Project Site
 
 https://xs927991.xsrv.jp/en/acx/index.html
+
+## Experimental Node Graph Profile
+
+[Node Graph Profile 0.1](docs/NODE-GRAPH-PROFILE.md) defines revision-bound agent editing, execution and conditional recovery of Rust-owned graphs. It includes an [intent schema](schemas/profiles/acx-node-graph-intent.schema.json), [example](examples/node-graph-intent.json) and validation tests. The UNGE reference adapter uses a dedicated JSON Lines pipe; this is an optional experimental binding, not MCP or a new mandatory core feature. The guide includes English, Japanese and Simplified Chinese.

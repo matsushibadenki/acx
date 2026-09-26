@@ -1,0 +1,21 @@
+{
+  "kind": "edit",
+  "document_id": "00000000-0000-4000-8000-000000000001",
+  "expected_revision": 0,
+  "operations": [
+    {
+      "kind": "create_node",
+      "id": "00000000-0000-4000-8000-000000000002",
+      "type_id": "math.number",
+      "properties": {
+        "value": 42
+      },
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 180,
+        "height": 90
+      }
+    }
+  ]
+}

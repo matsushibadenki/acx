@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acx.dev/schema/profiles/print-intent/0.1.json",
+  "title": "ACX PrintIntent Profile 0.1",
+  "type": "object",
+  "required": ["document", "copies", "output"],
+  "properties": {
+    "document": {
+      "type": "object",
+      "required": ["uri", "mediaType", "sha256"],
+      "properties": {
+        "uri": { "type": "string", "format": "uri" },
+        "mediaType": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      },
+      "additionalProperties": false
+    },
+    "copies": { "$ref": "#/$defs/requirementInteger" },
+    "output": {
+      "type": "object",
+      "required": ["destination"],
+      "properties": {
+        "destination": { "enum": ["artifact", "printer"] },
+        "printerId": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "destination": { "const": "printer" } } },
+          "then": { "required": ["printerId"] }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "dpi": { "$ref": "#/$defs/requirementInteger" },
+    "colorMode": { "$ref": "#/$defs/requirementString" },
+    "media": { "$ref": "#/$defs/requirementString" },
+    "sides": { "$ref": "#/$defs/requirementString" },
+    "finishings": {
+      "type": "object",
+      "required": ["mode", "value"],
+      "properties": {
+        "mode": { "$ref": "#/$defs/mode" },
+        "value": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      },
+      "additionalProperties": false
+    },
+    "colorPolicy": { "type": "string" },
+    "priority": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "deadline": { "type": "string", "format": "date-time" },
+    "idempotencyKey": { "type": "string", "minLength": 16, "maxLength": 255 }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "mode": { "enum": ["required", "preferred", "automatic"] },
+    "requirementInteger": {
+      "type": "object",
+      "required": ["mode", "value"],
+      "properties": {
+        "mode": { "$ref": "#/$defs/mode" },
+        "value": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "requirementString": {
+      "type": "object",
+      "required": ["mode", "value"],
+      "properties": {
+        "mode": { "$ref": "#/$defs/mode" },
+        "value": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  }
+}

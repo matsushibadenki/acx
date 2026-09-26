@@ -1,0 +1,23 @@
+{
+  "document": {
+    "uri": "https://example.org/documents/proof.pdf",
+    "mediaType": "application/pdf",
+    "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+  },
+  "copies": {
+    "mode": "required",
+    "value": 1
+  },
+  "output": {
+    "destination": "artifact"
+  },
+  "dpi": {
+    "mode": "preferred",
+    "value": 600
+  },
+  "colorMode": {
+    "mode": "required",
+    "value": "cmyk"
+  },
+  "idempotencyKey": "example-print-20260926-0001"
+}
