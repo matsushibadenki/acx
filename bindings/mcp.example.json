@@ -1,0 +1,1 @@
+{"type":"mcp","server":"https://provider.example/mcp","tool":"capability_tool","mapping":{"arguments":"$.input","result":"$.output"}}

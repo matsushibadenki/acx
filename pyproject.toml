@@ -1,0 +1,13 @@
+[build-system]
+requires=["setuptools>=68"]
+build-backend="setuptools.build_meta"
+[project]
+name="acx-standard"
+version="0.1.0a1"
+description="Reference validator for Agent Capability Exchange"
+requires-python=">=3.10"
+dependencies=["jsonschema>=4.20"]
+[project.scripts]
+acx="acx.__main__:main"
+[tool.setuptools.packages.find]
+where=["src"]
